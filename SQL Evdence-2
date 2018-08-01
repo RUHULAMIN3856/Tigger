@@ -1,0 +1,52 @@
+ 
+ Insert Recode
+-----------------------------------------------
+
+
+use AdventureWorks2012
+
+GO
+declare @mytable table
+(
+Firstname varchar(50), 
+LastName VARCHAR(50)
+);
+
+insert into @mytable 
+select FirstName, LastName from
+person.person;
+select * from @MyTable;
+GO
+
+
+
+
+-----------------------------------------------------------------------------
+Join    ,   having ,  Group By
+----------------------------------------
+use AdventureWorks2012
+
+select*from Sales.SalesOrderDetail
+
+select*from Sales.SalesOrderHeader
+
+
+select sod.productID,sum(sod.unitPrice)as TotalPrice from sales.SalesOrderDetail as sod
+join
+Sales.SalesOrderHeader as s
+on
+s.SalesOrderID=sod.SalesOrderID group by sod.ProductID
+having sod.ProductID=974
+------------------------------------------------------------------------------------------------
+
+
+
+sub Queary
+-----------------------------------
+select*from  Sales.SalesOrderDetail as sod 
+where sod.SalesOrderID 
+in (select soh.SalesOrderID from Sales.SalesOrderHeader as soh);
+
+
+
+
