@@ -18,3 +18,17 @@ end
 insert into T_Emplyee(Name,DoB,Gender,dptID)
 select Name,DoB,Gender,@depertmentID from inserted
 end
+
+
+
+
+
+
+
+insert into vw_CombineEmployee values ('7','salam','01/03/1998','othar','Wpf')
+
+
+
+
+
+select*from vw_CombineEmployee
