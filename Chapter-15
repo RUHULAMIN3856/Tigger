@@ -1,0 +1,20 @@
+create trigger tr_vw_CombineEmployee_InstedofInsert
+on vw_CombineEmployee
+instead of insert 
+as
+begin 
+
+declare @depertmentID int
+select @depertmentID=dptID from T_Depetment
+join
+inserted on inserted.dptName=T_Depetment.dptName
+
+if (@depertmentID is null)
+begin 
+Raiserror('Invalied Department Name.Statement atermineted',16,1)
+return
+
+end
+insert into T_Emplyee(Name,DoB,Gender,dptID)
+select Name,DoB,Gender,@depertmentID from inserted
+end
