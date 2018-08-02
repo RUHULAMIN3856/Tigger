@@ -18,6 +18,13 @@ person.person;
 select * from @MyTable;
 GO
 
+  OR
+
+insert into Person.PersonPhone(BusinessEntityID,PhoneNumber,PhoneNumberTypeID,ModifiedDate)
+select '2','697-555-0584','2','01/01/2011'
+
+select*from person.PersonPhone as p where p.PhoneNumber ='697-555-0584'
+
 
 
 
