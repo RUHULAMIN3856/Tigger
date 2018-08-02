@@ -48,5 +48,11 @@ where sod.SalesOrderID
 in (select soh.SalesOrderID from Sales.SalesOrderHeader as soh);
 
 
+OR
+
+select SalesOrderID,LineTotal,
+(select AVG(LineTotal)from Sales.SalesOrderDetail) as averageLineTotal
+from sales.salesOrderDetail;
+
 
 
