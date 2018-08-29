@@ -1,0 +1,27 @@
+
+
+
+
+CREATE INDEX index_name
+ON table_name (column1, column2, ...)
+-------------------------------------
+CREATE VIEW CustomerPhoneList_vw
+AS
+SELECT CustomerName, Contact, Phone
+FROM Customers;
+------------------------------------------
+CREATE PROC spEmployee
+AS
+SELECT * FROM HumanResources.Employee;
+-------------------------------------------
+
+CREATE FUNCTION IsInFiscalYear (@YearEnding DATE, @CompareDate DATE)
+RETURNS BIT
+AS
+BEGIN
+DECLARE @out BIT = 0; --Assume FALSE
+IF @CompareDate BETWEEN DATEADD(day, 1, DATEADD(year, -1, @YearEnding))
+AND @YearEnding
+SET @out = 1; --Conditionally set to TRUE
+RETURN @out;
+END;
